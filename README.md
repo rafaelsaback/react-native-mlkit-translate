@@ -10,8 +10,10 @@
 
 ## Usage
 ```javascript
-import RNMlKitTranslateModule from 'react-native-mlkit-translate';
+import MlkitTranslate from 'react-native-mlkit-translate';
 
-// TODO: What to do with the module?
-RNMlKitTranslateModule;
+MlkitTranslate.translate('hello world!', 'en', 'pt').then((translation) => {
+  // Use the translation however you need :)
+  alert(translation)
+});
 ```
