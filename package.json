@@ -3,15 +3,17 @@
   "title": "React Native Mlkit Translate",
   "version": "1.0.0",
   "description": "TODO",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "README.md",
     "android",
-    "index.js",
     "ios",
-    "react-native-mlkit-translate.podspec"
+    "react-native-mlkit-translate.podspec",
+    "lib"
   ],
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -34,7 +36,9 @@
     "react-native": ">=0.60.0-rc.0 <1.0.x"
   },
   "devDependencies": {
+    "@types/react-native": "^0.63.42",
     "react": "^16.9.0",
-    "react-native": "^0.61.5"
+    "react-native": "^0.61.5",
+    "typescript": "^4.1.3"
   }
 }
