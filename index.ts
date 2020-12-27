@@ -1,5 +1,13 @@
-import { NativeModules } from 'react-native';
+import { NativeModules } from "react-native";
 
 const { RNMlKitTranslateModule } = NativeModules;
 
-export default RNMlKitTranslateModule;
+interface IMLKitTranslateModule {
+  translate(
+    text: string,
+    sourceLanguage: string,
+    targetLanguage: string
+  ): Promise<string>;
+}
+
+export default RNMlKitTranslateModule as IMLKitTranslateModule;
