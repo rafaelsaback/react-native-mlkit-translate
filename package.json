@@ -2,7 +2,7 @@
   "name": "react-native-mlkit-translate",
   "title": "React Native Mlkit Translate",
   "version": "1.0.0",
-  "description": "TODO",
+  "description": "A React Native integration for ML Kit Translate.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
