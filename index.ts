@@ -8,6 +8,7 @@ interface IMLKitTranslateModule {
     sourceLanguage: string,
     targetLanguage: string
   ): Promise<string>;
+  getDownloadedModels(): Promise<string[]>;
 }
 
 export default RNMlKitTranslateModule as IMLKitTranslateModule;

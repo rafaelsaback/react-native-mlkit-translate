@@ -16,9 +16,9 @@ so feel free to add an IOS implementation as well :)**
 
 ## Usage
 ```javascript
-import MlkitTranslate from 'react-native-mlkit-translate';
+import MlKitTranslate from 'react-native-mlkit-translate';
 
-MlkitTranslate.translate('hello world!', 'en', 'pt').then((translation) => {
+MlKitTranslate.translate('hello world!', 'en', 'pt').then((translation) => {
   // Use the translation however you need :)
   alert(translation)
 });

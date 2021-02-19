@@ -1,6 +1,6 @@
 {
   "name": "react-native-mlkit-translate",
-  "title": "React Native Mlkit Translate",
+  "title": "React Native MlKit Translate",
   "version": "1.0.7",
   "description": "A React Native integration for ML Kit Translate.",
   "main": "lib/index.js",
@@ -22,7 +22,8 @@
     "baseUrl": "https://github.com/rafaelsaback/react-native-mlkit-translate"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "mlkit"
   ],
   "author": {
     "name": "Rafael Saback",
