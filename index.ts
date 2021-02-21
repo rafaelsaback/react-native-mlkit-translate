@@ -9,6 +9,7 @@ interface IMLKitTranslateModule {
     targetLanguage: string
   ): Promise<string>;
   getDownloadedModels(): Promise<string[]>;
+  deleteDownloadedModel(languageCode: string): Promise<void>;
 }
 
 export default RNMlKitTranslateModule as IMLKitTranslateModule;

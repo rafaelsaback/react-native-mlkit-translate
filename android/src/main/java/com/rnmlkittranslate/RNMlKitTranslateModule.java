@@ -95,15 +95,42 @@ public class RNMlKitTranslateModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
      public void getDownloadedModels(final Promise promise) {
-         modelManager.getDownloadedModels(TranslateRemoteModel.class).addOnSuccessListener(new OnSuccessListener<Set<TranslateRemoteModel>>() {
-            @Override
-            public void onSuccess(@NonNull Set<TranslateRemoteModel> models) {
-              WritableArray modelCodes = Arguments.createArray();
-              for (TranslateRemoteModel model : models) {
-                modelCodes.pushString(model.getLanguage());
-              }
-              promise.resolve(modelCodes);
-            }
-         });
+         modelManager.getDownloadedModels(TranslateRemoteModel.class)
+            .addOnSuccessListener(new OnSuccessListener<Set<TranslateRemoteModel>>() {
+               @Override
+               public void onSuccess(@NonNull Set<TranslateRemoteModel> models) {
+                 WritableArray modelCodes = Arguments.createArray();
+                 for (TranslateRemoteModel model : models) {
+                   modelCodes.pushString(model.getLanguage());
+                 }
+                 promise.resolve(modelCodes);
+               }
+            })
+            .addOnFailureListener(
+               new OnFailureListener() {
+                   @Override
+                   public void onFailure(@NonNull Exception e) {
+                      promise.reject("Failed to retrieve the downloaded models.");
+                   }
+               }
+            );
       }
+
+    @ReactMethod
+     public void deleteDownloadedModel(final String languageCode, final Promise promise) {
+        TranslateRemoteModel model = new TranslateRemoteModel.Builder(languageCode).build();
+        modelManager.deleteDownloadedModel(model)
+            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void v) {
+                    promise.resolve("Successfully deleted the model.");
+                }
+            })
+            .addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    promise.reject("Failed to delete the model");
+                }
+            });
+     }
 }
