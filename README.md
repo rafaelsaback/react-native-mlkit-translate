@@ -14,12 +14,11 @@ so feel free to add an IOS implementation as well :)**
 
 `$ react-native link react-native-mlkit-translate`
 
-## Usage
-```javascript
-import MlKitTranslate from 'react-native-mlkit-translate';
+## API
+#### `translate(text: string, sourceLanguage: string, targetLanguage: string): Promise <string>`
 
-MlKitTranslate.translate('hello world!', 'en', 'pt').then((translation) => {
-  // Use the translation however you need :)
-  alert(translation)
-});
-```
+#### `getDownloadedModels(): Promise<string[]>`
+
+#### `deleteDownloadedModel(languageCode: string): Promise<void>`
+
+#### `downloadModel(languageCode: string): Promise<void>`
