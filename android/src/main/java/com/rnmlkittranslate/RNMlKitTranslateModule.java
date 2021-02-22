@@ -135,5 +135,26 @@ public class RNMlKitTranslateModule extends ReactContextBaseJavaModule {
               }
            });
      }
+
+    @ReactMethod
+     public void downloadModel(final String languageCode, final Promise promise) {
+        TranslateRemoteModel model = new TranslateRemoteModel.Builder(languageCode).build();
+        DownloadConditions conditions = new DownloadConditions.Builder()
+            .requireWifi()
+            .build();
+
+        modelManager.download(model, conditions)
+           .addOnSuccessListener(new OnSuccessListener<Void>() {
+              @Override
+              public void onSuccess(Void v) {
+                 promise.resolve("Successfully downloaded the model.");
+              }
+           })
+           .addOnFailureListener(new OnFailureListener() {
+              @Override
+              public void onFailure(@NonNull Exception e) {
+                 promise.reject("Failed to downloaded the model");
+              }
+           });
      }
 }
