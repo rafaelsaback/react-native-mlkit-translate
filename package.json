@@ -1,7 +1,7 @@
 {
   "name": "react-native-mlkit-translate",
   "title": "React Native MlKit Translate",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "A React Native integration for ML Kit Translate.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
