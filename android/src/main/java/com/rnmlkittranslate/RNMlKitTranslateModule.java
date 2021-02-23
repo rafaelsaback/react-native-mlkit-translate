@@ -44,7 +44,7 @@ public class RNMlKitTranslateModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void translate(final String text, String sourceLanguage, String targetLanguage, final Promise promise) {
+    public void translate(final String text, String sourceLanguage, final String targetLanguage, final Boolean requireWifi, final Promise promise) {
         Log.d("RNMlKitTranslateModule", "Translating sentence: " + text + " | sourceLanguage: " + sourceLanguage + " | targetLanguage: " + targetLanguage);
         if (sourceLanguage == null || targetLanguage == null || text == null || text.isEmpty()) {
            promise.reject("Invalid inputs");
@@ -57,9 +57,12 @@ public class RNMlKitTranslateModule extends ReactContextBaseJavaModule {
 
         final Translator translator = Translation.getClient(options);
 
-        DownloadConditions conditions = new DownloadConditions.Builder()
-          .requireWifi()
-          .build();
+        DownloadConditions conditions = requireWifi ?
+            new DownloadConditions.Builder()
+              .requireWifi()
+              .build() :
+            new DownloadConditions.Builder()
+              .build();
 
        translator.downloadModelIfNeeded(conditions)
           .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -137,11 +140,14 @@ public class RNMlKitTranslateModule extends ReactContextBaseJavaModule {
      }
 
     @ReactMethod
-     public void downloadModel(final String languageCode, final Promise promise) {
+     public void downloadModel(final String languageCode, final Boolean requireWifi, final Promise promise) {
         TranslateRemoteModel model = new TranslateRemoteModel.Builder(languageCode).build();
-        DownloadConditions conditions = new DownloadConditions.Builder()
-            .requireWifi()
-            .build();
+        DownloadConditions conditions = requireWifi ?
+            new DownloadConditions.Builder()
+              .requireWifi()
+              .build() :
+            new DownloadConditions.Builder()
+              .build();
 
         modelManager.download(model, conditions)
            .addOnSuccessListener(new OnSuccessListener<Void>() {
